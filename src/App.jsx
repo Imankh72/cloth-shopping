@@ -1,7 +1,9 @@
+import HomePage from "./components/HomePage";
+
 const App = () => {
   return (
     <>
-      <h1>E-Commerce</h1>
+      <HomePage />
     </>
   );
 };

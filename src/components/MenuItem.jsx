@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
-const MenuItem = ({ title, imageUrl }) => {
+const MenuItem = ({ title, imageUrl, size }) => {
   return (
-    <MenuItemWrapper style={{ backgroundImage: `url(${imageUrl})` }}>
+    <MenuItemWrapper
+      className={`${size}`}
+      style={{ backgroundImage: `url(${imageUrl})` }}
+    >
       <div className="content">
         <h1 className="title">{title}</h1>
         <span className="subtitle">Shop Now</span>
@@ -24,6 +27,10 @@ const MenuItemWrapper = styled.div`
   margin: 8px 16px;
   background-position: center;
   background-size: cover;
+
+  &.large {
+    height: 380px;
+  }
 
   &:first-child {
     margin-right: 8px;

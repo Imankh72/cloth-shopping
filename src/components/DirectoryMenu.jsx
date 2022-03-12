@@ -42,12 +42,13 @@ const DirectoryMenu = () => {
 
   return (
     <DirectoryMenuWrapper>
-      {collections.map(({ id, title, imageUrl, linkUrl }) => (
+      {collections.map(({ id, title, imageUrl, linkUrl, size }) => (
         <MenuItem
           key={id}
           title={title}
           imageUrl={imageUrl}
           linkUrl={linkUrl}
+          size={size}
         />
       ))}
     </DirectoryMenuWrapper>

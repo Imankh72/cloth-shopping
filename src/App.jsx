@@ -1,11 +1,18 @@
 import HomePage from "./pages/HomePage";
+import ShopPage from "./pages/ShopPage";
+import { Routes, Route } from "react-router-dom";
+
 import { createGlobalStyle } from "styled-components";
+import { shopData } from "./data/shopData";
 
 const App = () => {
   return (
     <>
       <GlobalStyles />
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+      </Routes>
     </>
   );
 };
@@ -28,11 +35,12 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  font-family:"Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-grey-1);
 }
 
 

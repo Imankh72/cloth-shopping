@@ -26,6 +26,8 @@ const MenuItemWrapper = styled.div`
   justify-content: center;
   border: 1px solid var(--color-black);
   overflow: hidden;
+  border-radius: 4px;
+  border: 0;
 
   &.large {
     height: 380px;
@@ -62,16 +64,19 @@ const MenuItemWrapper = styled.div`
     background: var(--color-white);
     opacity: 0.7;
     position: absolute;
+    border-radius: 4px;
+    border: 0;
+    transition: all 0.2s;
 
     .title {
       font-weight: 22px;
       font-weight: bold;
       margin-bottom: 6px;
-      color: var(--color-grey-1);
     }
 
     .subtitle {
-      font-size: 16px;
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 `;

@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 const MenuItem = ({ title, imageUrl, size }) => {
   return (
-    <MenuItemWrapper
-      className={`${size}`}
-      style={{ backgroundImage: `url(${imageUrl})` }}
-    >
+    <MenuItemWrapper className={`${size}`}>
+      <div
+        className="background-image"
+        style={{ backgroundImage: `url(${imageUrl})` }}
+      />
       <div className="content">
-        <h1 className="title">{title}</h1>
-        <span className="subtitle">Shop Now</span>
+        <h1 className="title">{title.toUpperCase()}</h1>
+        <span className="subtitle">SHOP NOW</span>
       </div>
     </MenuItemWrapper>
   );
@@ -24,20 +25,30 @@ const MenuItemWrapper = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid var(--color-black);
-  margin: 8px 16px;
-  background-position: center;
-  background-size: cover;
+  overflow: hidden;
 
   &.large {
     height: 380px;
   }
 
-  &:first-child {
-    margin-right: 8px;
+  &:hover {
+    cursor: pointer;
+
+    & .background-image {
+      transform: scale(1.1);
+      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+
+    & .content {
+      opacity: 0.9;
+    }
   }
 
-  &:last-child {
-    margin-left: 8px;
+  .background-image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
   }
 
   .content {
@@ -48,6 +59,9 @@ const MenuItemWrapper = styled.div`
     align-items: center;
     justify-content: center;
     border: 1px solid var(--color-black);
+    background: var(--color-white);
+    opacity: 0.7;
+    position: absolute;
 
     .title {
       font-weight: 22px;

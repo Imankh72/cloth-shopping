@@ -61,5 +61,6 @@ const DirectoryMenuWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
 `;

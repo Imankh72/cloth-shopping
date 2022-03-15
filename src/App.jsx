@@ -41,6 +41,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-grey-1);
+  padding: 20px 60px;
 }
 
 

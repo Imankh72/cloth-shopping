@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import CustomButton from "./CustomButton";
 import FormInput from "./FormInput";
 
 const SignIn = () => {
@@ -27,8 +28,8 @@ const SignIn = () => {
 
   return (
     <SignInWrapper>
-      <h2>I already have an account</h2>
-      <span>Sign in with your email and password</span>
+      <h2 className="title">I already have an account</h2>
+      <span className="subtitle">Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           type="email"
@@ -48,7 +49,7 @@ const SignIn = () => {
           required
         />
 
-        <input type="submit" value="submit form" />
+        <CustomButton type="submit">Sign In</CustomButton>
       </form>
     </SignInWrapper>
   );
@@ -58,4 +59,15 @@ export default SignIn;
 
 const SignInWrapper = styled.div`
   width: 30vw;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
 `;

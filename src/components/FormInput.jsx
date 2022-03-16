@@ -37,7 +37,7 @@ const FormInputWrapper = styled.div`
 
     &:focus ~ .form-input-label {
       top: -14px;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
@@ -46,7 +46,7 @@ const FormInputWrapper = styled.div`
   }
 
   .form-input-label {
-    font-size: 20px;
+    font-size: 18px;
     color: var(--color-grey-2);
     font-weight: normal;
     position: absolute;

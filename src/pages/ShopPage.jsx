@@ -18,4 +18,7 @@ const ShopPage = () => {
 
 export default ShopPage;
 
-const ShopPageWrapper = styled.div``;
+const ShopPageWrapper = styled.div`
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+`;

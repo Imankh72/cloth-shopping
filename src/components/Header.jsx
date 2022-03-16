@@ -23,8 +23,9 @@ const Header = () => {
 export default Header;
 
 const HeaderWrapper = styled.div`
+  max-width: var(--maxWidth);
+  margin: 0 auto;
   height: 70px;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

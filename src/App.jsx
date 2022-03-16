@@ -3,8 +3,8 @@ import ShopPage from "./pages/ShopPage";
 import { Routes, Route } from "react-router-dom";
 
 import { createGlobalStyle } from "styled-components";
-import { shopData } from "./data/shopData";
 import Header from "./components/Header";
+import SignInPage from "./pages/SignInPage";
 
 const App = () => {
   return (
@@ -14,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
       </Routes>
     </>
   );
@@ -24,11 +25,15 @@ export default App;
 const GlobalStyles = createGlobalStyle`
 
 :root{
+  /* Colors Variables */
   --color-black:#000;
   --color-white:#fff;
   --color-grey-1:#343a40;
   --color-grey-2:#868e96;
   --color-grey-3:#212529;
+
+  /* Const Sizes */
+  --maxWidth:1200px;
 }
 
 *,*::after,*::before{

@@ -5,8 +5,24 @@ import { Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Header from "./components/Header";
 import SignInPage from "./pages/SignInPage";
+import { useEffect, useState } from "react";
+import { auth } from "./utils/firebase";
+
+import { onSnapshot } from "firebase/firestore";
 
 const App = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      console.log(user);
+    });
+
+    return () => {
+      onSnapshot();
+    };
+  }, []);
+
   return (
     <>
       <GlobalStyles />

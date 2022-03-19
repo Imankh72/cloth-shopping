@@ -14,7 +14,8 @@ const Button = styled.button`
   line-height: 50px;
   padding: 0 35px;
   font-size: 15px;
-  background-color: var(--color-black);
+  background-color: ${(p) =>
+    p.google ? "var(--color-google-blue)" : "var(--color-black)"};
   color: var(--color-white);
   text-transform: uppercase;
   font-weight: bolder;

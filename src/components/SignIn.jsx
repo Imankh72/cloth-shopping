@@ -50,10 +50,12 @@ const SignIn = () => {
           required
         />
 
-        <CustomButton type="submit">Sign In</CustomButton>
-        <CustomButton onClick={signInWithGoogle}>
-          Sign In With Google
-        </CustomButton>
+        <div className="button-group">
+          <CustomButton type="submit">Sign In</CustomButton>
+          <CustomButton onClick={signInWithGoogle} google>
+            Sign In With Google
+          </CustomButton>
+        </div>
       </form>
     </SignInWrapper>
   );
@@ -62,7 +64,7 @@ const SignIn = () => {
 export default SignIn;
 
 const SignInWrapper = styled.div`
-  width: 30vw;
+  width: 450px;
   display: flex;
   flex-direction: column;
 
@@ -73,5 +75,11 @@ const SignInWrapper = styled.div`
 
   .subtitle {
     font-size: 18px;
+  }
+
+  .button-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 `;

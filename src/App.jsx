@@ -26,7 +26,7 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <Header />
+      <Header currentUser={currentUser} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
@@ -47,6 +47,7 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-1:#343a40;
   --color-grey-2:#868e96;
   --color-grey-3:#212529;
+  --color-google-blue:#4285f4;
 
   /* Const Sizes */
   --maxWidth:1200px;
@@ -77,5 +78,4 @@ a{
 li{
   list-style: none;
 }
-
 `;

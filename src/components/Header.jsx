@@ -1,8 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "../assets/logo.svg";
+import { auth } from "../utils/firebase";
 
-const Header = () => {
+const Header = ({ currentUser }) => {
   return (
     <HeaderWrapper>
       <Link className="logo-container" to="/">
@@ -15,6 +16,15 @@ const Header = () => {
         <NavLink className="link" to="/contact">
           CONTACT
         </NavLink>
+        {currentUser ? (
+          <div className="link" onClick={() => auth.signOut()}>
+            Log Out
+          </div>
+        ) : (
+          <Link to="/sign-in" className="link">
+            Sign In
+          </Link>
+        )}
       </div>
     </HeaderWrapper>
   );
@@ -39,6 +49,8 @@ const HeaderWrapper = styled.div`
     .link {
       color: var(--color-grey-2);
       transition: all 0.3s;
+      cursor: pointer;
+      text-transform: uppercase;
 
       &:hover {
         color: var(--color-grey-3);

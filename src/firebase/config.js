@@ -43,16 +43,16 @@ export const signInWithGoogle = () => {
 export const createUserProfile = async (userAuth, extraData) => {
   const { displayName, email, uid } = userAuth;
   if (!userAuth) return;
-  console.log(displayName, email, uid);
+
   const userRef = doc(db, "users", uid);
   const result = await getDoc(userRef);
   if (!result.exists()) {
     try {
       await setDoc(userRef, {
-        name: displayName,
         email,
         createdAt: serverTimestamp(),
         id: uid,
+        ...extraData,
       });
     } catch (error) {
       console.log(error.message);

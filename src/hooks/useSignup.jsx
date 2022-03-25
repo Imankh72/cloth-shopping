@@ -8,12 +8,7 @@ export const useSignup = () => {
   const signUp = async (email, password) => {
     try {
       setError(null);
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(response.user);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       setError(error.message);
     }

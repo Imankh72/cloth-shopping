@@ -1,18 +1,21 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { signInWithGoogle } from "../utils/firebase";
+import { signInWithGoogle } from "../firebase/config";
 import CustomButton from "./CustomButton";
 import FormInput from "./FormInput";
+import { useSignup } from "../hooks/useSignup";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { error, signUp } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, password);
     setEmail("");
     setPassword("");
+    signUp(email, password);
   };
 
   const handleChange = (e) => {
@@ -56,6 +59,7 @@ const SignIn = () => {
             Sign In With Google
           </CustomButton>
         </div>
+        {error && <p>{error}</p>}
       </form>
     </SignInWrapper>
   );

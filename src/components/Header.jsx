@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "../assets/logo.svg";
-import { auth } from "../utils/firebase";
+import { auth } from "../firebase/config";
 
 const Header = ({ currentUser }) => {
   return (
@@ -21,9 +21,9 @@ const Header = ({ currentUser }) => {
             Log Out
           </div>
         ) : (
-          <Link to="/sign-in" className="link">
+          <NavLink to="/sign-in" className="link">
             Sign In
-          </Link>
+          </NavLink>
         )}
       </div>
     </HeaderWrapper>

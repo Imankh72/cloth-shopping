@@ -26,7 +26,9 @@ const Button = styled.button`
 
   &:hover {
     background-color: var(--color-white);
-    color: var(--color-black);
-    outline: 1px solid var(--color-black);
+    color: ${(p) =>
+      p.google ? "var(--color-google-blue)" : "var(--color-black)"};
+    outline: 1px solid
+      ${(p) => (p.google ? "var(--color-google-blue)" : "var(--color-black)")};
   }
 `;

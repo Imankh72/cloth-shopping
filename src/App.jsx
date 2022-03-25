@@ -1,21 +1,22 @@
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
-import { Routes, Route } from "react-router-dom";
-
-import { createGlobalStyle } from "styled-components";
 import Header from "./components/Header";
 import SignInPage from "./pages/SignInPage";
 import { useEffect, useState } from "react";
-import { auth } from "./utils/firebase";
-
+import { Routes, Route } from "react-router-dom";
+import { auth, createUserProfile } from "./firebase/config";
 import { onSnapshot } from "firebase/firestore";
+
+import { createGlobalStyle } from "styled-components";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      console.log(user);
+    auth.onAuthStateChanged(async (userAuth) => {
+      setCurrentUser(userAuth);
+      if (userAuth) {
+        await createUserProfile(userAuth);
+      }
     });
 
     return () => {
@@ -47,10 +48,11 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-1:#343a40;
   --color-grey-2:#868e96;
   --color-grey-3:#212529;
-  --color-google-blue:#4285f4;
+  --color-google-blue:#228be6;
 
   /* Const Sizes */
   --maxWidth:1200px;
+
 }
 
 *,*::after,*::before{
@@ -69,7 +71,6 @@ body {
  
   padding: 20px 60px;
 }
-
 
 a{
   text-decoration: none;

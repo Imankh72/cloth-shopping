@@ -3,18 +3,20 @@ import ShopPage from "./pages/ShopPage";
 import Header from "./components/Header";
 import SignInPage from "./pages/SignInPage";
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { auth, createUserProfile } from "./firebase/config";
 import { onSnapshot } from "firebase/firestore";
+import { useDispatch, useSelector } from "react-redux";
+import { userActionTypes } from "./redux/user/userActionTypes";
 
 import { createGlobalStyle } from "styled-components";
-import { useDispatch } from "react-redux";
 
 const App = () => {
+  const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
-      dispatch({ type: "SET_CURRENT_USER", payload: userAuth });
+      dispatch({ type: userActionTypes.SET_CURRENT_USER, payload: userAuth });
       if (userAuth) {
         await createUserProfile(userAuth);
       }
@@ -32,7 +34,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
-        <Route path="/sign-in" element={<SignInPage />} />
+        <Route
+          path="/sign-in"
+          element={currentUser ? <Navigate to="/" replace /> : <SignInPage />}
+        />
       </Routes>
     </>
   );

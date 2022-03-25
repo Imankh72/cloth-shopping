@@ -29,6 +29,7 @@ const SignIn = () => {
         break;
       case "password":
         setPassword(e.target.value);
+        break;
       default:
         break;
     }

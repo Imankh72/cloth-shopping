@@ -31,12 +31,14 @@ export const auth = getAuth();
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 
+// Google Sign In Function
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider);
 };
 
+// Create User function
 export const createUserProfile = async (userAuth, extraData) => {
-  const { displayName, email, uid } = userAuth;
+  const { email, uid } = userAuth;
   if (!userAuth) return;
 
   const userRef = doc(db, "users", uid);

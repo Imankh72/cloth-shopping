@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import styled from "styled-components";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { auth } from "../firebase/config";
+
+import styled from "styled-components";
 
 const Header = ({ currentUser }) => {
   return (

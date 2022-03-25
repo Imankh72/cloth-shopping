@@ -3,8 +3,11 @@ import { ReactComponent as Logo } from "../assets/logo.svg";
 import { auth } from "../firebase/config";
 
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
-const Header = ({ currentUser }) => {
+const Header = () => {
+  const currentUser = useSelector((state) => state.user.currentUser);
+
   return (
     <HeaderWrapper>
       <Link className="logo-container" to="/">

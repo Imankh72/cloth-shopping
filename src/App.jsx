@@ -2,18 +2,19 @@ import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import Header from "./components/Header";
 import SignInPage from "./pages/SignInPage";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { auth, createUserProfile } from "./firebase/config";
 import { onSnapshot } from "firebase/firestore";
 
 import { createGlobalStyle } from "styled-components";
+import { useDispatch } from "react-redux";
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const dispatch = useDispatch();
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
-      setCurrentUser(userAuth);
+      dispatch({ type: "SET_CURRENT_USER", payload: userAuth });
       if (userAuth) {
         await createUserProfile(userAuth);
       }
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <Header currentUser={currentUser} />
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
@@ -69,7 +70,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
  
-  padding: 20px 60px;
+  padding: 20px 40px;
 }
 
 a{

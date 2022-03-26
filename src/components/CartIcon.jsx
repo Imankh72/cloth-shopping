@@ -1,10 +1,16 @@
 import { ReactComponent as ShoppingIcon } from "../assets/shopping-bag.svg";
+import { useDispatch } from "react-redux";
+import { cartActionTypes } from "../redux/cart/cartActionTypes";
 
 import styled from "styled-components";
 
 const CartIcon = () => {
+  const dispatch = useDispatch();
+
   return (
-    <CartIconWrapper>
+    <CartIconWrapper
+      onClick={() => dispatch({ type: cartActionTypes.SET_SHOW_CART })}
+    >
       <ShoppingIcon className="shopping-icon" />
       <span className="item-count">0</span>
     </CartIconWrapper>

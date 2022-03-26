@@ -1,13 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { auth } from "../firebase/config";
-
-import styled from "styled-components";
 import { useSelector } from "react-redux";
 import CartIcon from "./CartIcon";
+import CartDropdown from "./CartDropdown";
+
+import styled from "styled-components";
 
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
+  const showCart = useSelector((state) => state.cart.showCart);
 
   return (
     <HeaderWrapper>
@@ -32,6 +34,7 @@ const Header = () => {
         )}
         <CartIcon />
       </div>
+      {showCart && <CartDropdown />}
     </HeaderWrapper>
   );
 };
@@ -46,6 +49,7 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
+  position: relative;
 
   .links {
     display: flex;

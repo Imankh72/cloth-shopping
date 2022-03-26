@@ -15,7 +15,7 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
 export default CollectionItem;
 
 const CollectionItemWrapper = styled.div`
-  width: 22%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;

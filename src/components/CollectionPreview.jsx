@@ -31,5 +31,6 @@ const CollectionWrapper = styled.div`
   .preview {
     display: flex;
     justify-content: space-between;
+    gap: 0.5rem;
   }
 `;

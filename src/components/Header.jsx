@@ -4,6 +4,7 @@ import { auth } from "../firebase/config";
 
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import CartIcon from "./CartIcon";
 
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -29,6 +30,7 @@ const Header = () => {
             Sign In
           </NavLink>
         )}
+        <CartIcon />
       </div>
     </HeaderWrapper>
   );

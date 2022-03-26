@@ -10,6 +10,7 @@ import styled from "styled-components";
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const showCart = useSelector((state) => state.cart.showCart);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
     <HeaderWrapper>
@@ -34,7 +35,7 @@ const Header = () => {
         )}
         <CartIcon />
       </div>
-      {showCart && <CartDropdown />}
+      {showCart && <CartDropdown cartItems={cartItems} />}
     </HeaderWrapper>
   );
 };

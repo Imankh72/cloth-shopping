@@ -1,12 +1,17 @@
-import styled from "styled-components";
+import CartItem from "./CartItem";
 import CustomButton from "./CustomButton";
 
-const CartDropdown = () => {
+import styled from "styled-components";
+
+const CartDropdown = ({ cartItems }) => {
   return (
     <CartDropdownWrapper>
       <div className="cart-items">
-        <CustomButton>Go To Checkout</CustomButton>
+        {cartItems.map((cartItem, index) => (
+          <CartItem key={index} item={cartItem} />
+        ))}
       </div>
+      <CustomButton>Go To Checkout</CustomButton>
     </CartDropdownWrapper>
   );
 };
@@ -32,6 +37,7 @@ const CartDropdownWrapper = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
   }
 
   button {

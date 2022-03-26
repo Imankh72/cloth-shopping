@@ -5,15 +5,17 @@ import { cartActionTypes } from "../redux/cart/cartActionTypes";
 import styled from "styled-components";
 
 const CartIcon = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartCount = cartItems.reduce((a, cartItem) => a + cartItem.quantity, 0);
+
   const dispatch = useDispatch();
 
-  const cartItems = useSelector((state) => state.cart.cartItems);
   return (
     <CartIconWrapper
       onClick={() => dispatch({ type: cartActionTypes.SET_SHOW_CART })}
     >
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">{cartItems.length}</span>
+      <span className="item-count">{cartCount}</span>
     </CartIconWrapper>
   );
 };

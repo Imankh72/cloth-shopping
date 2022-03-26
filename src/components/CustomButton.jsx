@@ -23,6 +23,9 @@ const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: var(--color-white);

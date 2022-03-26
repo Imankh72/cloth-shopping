@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CustomButton from "./CustomButton";
 
 const CollectionItem = ({ id, name, price, imageUrl }) => {
   return (
@@ -8,6 +9,7 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
         <span className="name">{name}</span>
         <span className="price">${price}</span>
       </div>
+      <CustomButton className="add-to-cart-button">Add to cart</CustomButton>
     </CollectionItemWrapper>
   );
 };
@@ -20,6 +22,7 @@ const CollectionItemWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: 350px;
+  position: relative;
 
   .image {
     width: 100%;
@@ -28,6 +31,26 @@ const CollectionItemWrapper = styled.div`
     background-position: center;
     margin-bottom: 5px;
     border-radius: 4px;
+  }
+
+  .add-to-cart-button {
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 75%;
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    .image {
+      opacity: 0.8;
+    }
+
+    .add-to-cart-button {
+      display: flex;
+      opacity: 0.85;
+    }
   }
 
   .collection-footer {

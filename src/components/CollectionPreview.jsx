@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import CollectionItem from "./CollectionItem";
+
+import styled from "styled-components";
 
 const CollectionPreview = ({ title, items }) => {
   return (
@@ -8,8 +9,8 @@ const CollectionPreview = ({ title, items }) => {
       <div className="preview">
         {items
           .filter((item, index) => index < 4)
-          .map(({ id, ...props }) => (
-            <CollectionItem key={id} {...props} />
+          .map((item) => (
+            <CollectionItem key={item.id} item={item} />
           ))}
       </div>
     </CollectionWrapper>

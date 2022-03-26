@@ -25,7 +25,7 @@ const App = () => {
     return () => {
       onSnapshot();
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

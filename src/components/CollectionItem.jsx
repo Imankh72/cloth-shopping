@@ -1,7 +1,13 @@
-import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import CustomButton from "./CustomButton";
+import { cartActionTypes } from "../redux/cart/cartActionTypes";
 
-const CollectionItem = ({ id, name, price, imageUrl }) => {
+import styled from "styled-components";
+
+const CollectionItem = ({ item }) => {
+  const { name, price, imageUrl } = item;
+  const dispatch = useDispatch();
+
   return (
     <CollectionItemWrapper>
       <div style={{ backgroundImage: `url(${imageUrl})` }} className="image" />
@@ -9,7 +15,14 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
         <span className="name">{name}</span>
         <span className="price">${price}</span>
       </div>
-      <CustomButton className="add-to-cart-button">Add to cart</CustomButton>
+      <CustomButton
+        className="add-to-cart-button"
+        onClick={() =>
+          dispatch({ type: cartActionTypes.ADD_ITEM, payload: item })
+        }
+      >
+        Add to cart
+      </CustomButton>
     </CollectionItemWrapper>
   );
 };
@@ -35,7 +48,6 @@ const CollectionItemWrapper = styled.div`
 
   .add-to-cart-button {
     width: 80%;
-    opacity: 0.7;
     position: absolute;
     top: 75%;
     display: none;

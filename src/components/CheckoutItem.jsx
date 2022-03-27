@@ -1,6 +1,12 @@
+import { useDispatch } from "react-redux";
+import { cartActionTypes } from "../redux/cart/cartActionTypes";
+
 import styled from "styled-components";
 
-const CheckoutItem = ({ cartItem: { name, price, imageUrl, quantity } }) => {
+const CheckoutItem = ({ cartItem }) => {
+  const { name, price, imageUrl, quantity } = cartItem;
+
+  const dispatch = useDispatch();
   return (
     <CheckoutItemWrapper>
       <div className="image-container">
@@ -9,7 +15,17 @@ const CheckoutItem = ({ cartItem: { name, price, imageUrl, quantity } }) => {
       <span className="name">{name}</span>
       <span className="quantity">{quantity}</span>
       <span className="price">{price}</span>
-      <div className="remove-button">&#10005;</div>
+      <div
+        className="remove-button"
+        onClick={() =>
+          dispatch({
+            type: cartActionTypes.REMOVE_ITEM_FROM_CART,
+            payload: cartItem,
+          })
+        }
+      >
+        &#10005;
+      </div>
     </CheckoutItemWrapper>
   );
 };
@@ -26,7 +42,7 @@ const CheckoutItemWrapper = styled.div`
   font-size: 20px;
 
   .image-container {
-    width: 25%;
+    width: 23%;
     padding-right: 15px;
 
     img {

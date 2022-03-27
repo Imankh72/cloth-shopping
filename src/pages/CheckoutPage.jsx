@@ -57,7 +57,7 @@ const CheckoutPageWrapper = styled.div`
 
     .header-block {
       text-transform: capitalize;
-      width: 25%;
+      width: 23%;
 
       &:last-child {
         width: 8%;

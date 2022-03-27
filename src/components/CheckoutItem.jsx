@@ -13,7 +13,28 @@ const CheckoutItem = ({ cartItem }) => {
         <img src={imageUrl} alt={`${name} image`} />
       </div>
       <span className="name">{name}</span>
-      <span className="quantity">{quantity}</span>
+      <span className="quantity">
+        <div
+          className="arrow"
+          onClick={() =>
+            dispatch({
+              type: cartActionTypes.REDUCE_ITEM_QUANTITY,
+              payload: cartItem,
+            })
+          }
+        >
+          &#10094;
+        </div>
+        <span className="value"> {quantity}</span>
+        <div
+          className="arrow"
+          onClick={() =>
+            dispatch({ type: cartActionTypes.ADD_ITEM, payload: cartItem })
+          }
+        >
+          &#10095;
+        </div>
+      </span>
       <span className="price">{price}</span>
       <div
         className="remove-button"
@@ -57,7 +78,13 @@ const CheckoutItemWrapper = styled.div`
   }
 
   .quantity {
-    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .arrow {
+      cursor: pointer;
+    }
   }
 
   .remove-button {

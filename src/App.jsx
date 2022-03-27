@@ -1,13 +1,15 @@
-import HomePage from "./pages/HomePage";
-import ShopPage from "./pages/ShopPage";
-import Header from "./components/Header";
-import SignInPage from "./pages/SignInPage";
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { auth, createUserProfile } from "./firebase/config";
 import { onSnapshot } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import { userActionTypes } from "./redux/user/userActionTypes";
+
+import HomePage from "./pages/HomePage";
+import ShopPage from "./pages/ShopPage";
+import Header from "./components/Header";
+import SignInPage from "./pages/SignInPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -38,6 +40,7 @@ const App = () => {
           path="/sign-in"
           element={currentUser ? <Navigate to="/" replace /> : <SignInPage />}
         />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </>
   );

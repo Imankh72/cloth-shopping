@@ -1,17 +1,32 @@
 import CartItem from "./CartItem";
 import CustomButton from "./CustomButton";
 
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { cartActionTypes } from "../redux/cart/cartActionTypes";
 import styled from "styled-components";
 
 const CartDropdown = ({ cartItems }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const goToCheckoutPage = () => {
+    navigate("/checkout");
+    dispatch({ type: cartActionTypes.SET_SHOW_CART });
+  };
+
   return (
     <CartDropdownWrapper>
       <div className="cart-items">
-        {cartItems.map((cartItem, index) => (
-          <CartItem key={index} item={cartItem} />
-        ))}
+        {cartItems.length ? (
+          cartItems.map((cartItem, index) => (
+            <CartItem key={index} item={cartItem} />
+          ))
+        ) : (
+          <span className="empty-message">Your cart is empty</span>
+        )}
       </div>
-      <CustomButton>Go To Checkout</CustomButton>
+      <CustomButton onClick={goToCheckoutPage}>Go To Checkout</CustomButton>
     </CartDropdownWrapper>
   );
 };
@@ -31,6 +46,7 @@ const CartDropdownWrapper = styled.div`
   top: 60px;
   right: -15px;
   z-index: 5;
+  margin-bottom: 10px;
 
   .cart-items {
     width: 100%;
@@ -38,6 +54,13 @@ const CartDropdownWrapper = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+  }
+
+  .empty-message {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.75px;
+    margin: 120px auto;
   }
 
   button {

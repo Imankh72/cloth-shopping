@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import CheckoutItem from "../components/CheckoutItem";
 import { selectCartTotal } from "../redux/cart/cartSelector";
 
 const CheckoutPage = () => {
@@ -25,7 +26,9 @@ const CheckoutPage = () => {
           <span>Remove</span>
         </div>
       </div>
-      {cartItems.map((cartItem) => cartItem.name)}
+      {cartItems.map((cartItem) => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+      ))}
       <div className="total">
         <span>TOTAL : ${cartTotal}</span>
       </div>
@@ -54,7 +57,7 @@ const CheckoutPageWrapper = styled.div`
 
     .header-block {
       text-transform: capitalize;
-      /* width: 23%; */
+      width: 25%;
 
       &:last-child {
         width: 8%;

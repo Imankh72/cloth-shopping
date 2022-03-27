@@ -39,6 +39,7 @@ const CartDropdownWrapper = styled.div`
   height: 340px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   background-color: var(--color-white);
   border: 1px solid var(--color-grey-1);
@@ -46,11 +47,10 @@ const CartDropdownWrapper = styled.div`
   top: 60px;
   right: -15px;
   z-index: 5;
-  margin-bottom: 10px;
 
   .cart-items {
     width: 100%;
-    height: 100%;
+    height: 260px;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -61,9 +61,5 @@ const CartDropdownWrapper = styled.div`
     font-weight: bold;
     letter-spacing: 0.75px;
     margin: 120px auto;
-  }
-
-  button {
-    margin-top: auto;
   }
 `;

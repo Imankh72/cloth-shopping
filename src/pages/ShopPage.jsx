@@ -1,16 +1,11 @@
-import CollectionPreview from "../components/CollectionPreview";
-import { useSelector } from "react-redux";
+import CollectionOverview from "../components/CollectionOverview";
 
 import styled from "styled-components";
 
 const ShopPage = () => {
-  const collections = useSelector((state) => state.collection);
-
   return (
     <ShopPageWrapper>
-      {collections.map(({ id, ...props }) => (
-        <CollectionPreview key={id} {...props} />
-      ))}
+      <CollectionOverview />
     </ShopPageWrapper>
   );
 };

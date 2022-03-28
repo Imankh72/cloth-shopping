@@ -7,7 +7,7 @@ const CustomButton = ({ children, ...props }) => {
 export default CustomButton;
 
 const Button = styled.button`
-  min-width: 165px;
+  min-width: 100px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;

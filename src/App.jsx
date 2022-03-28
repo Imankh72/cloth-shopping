@@ -10,6 +10,7 @@ import ShopPage from "./pages/ShopPage";
 import Header from "./components/Header";
 import SignInPage from "./pages/SignInPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import CollectionPage from "./pages/CollectionPage";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -41,6 +42,7 @@ const App = () => {
           element={currentUser ? <Navigate to="/" replace /> : <SignInPage />}
         />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/shop/:id" element={<CollectionPage />} />
       </Routes>
     </>
   );

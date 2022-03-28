@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 import MenuItem from "./MenuItem";
+
+import styled from "styled-components";
 
 const DirectoryMenu = () => {
   const collections = useSelector((state) => state.directory);

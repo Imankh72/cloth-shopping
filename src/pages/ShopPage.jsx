@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { shopData } from "../data/shopData";
+import CollectionPreview from "../components/CollectionPreview";
+import { useSelector } from "react-redux";
 
 import styled from "styled-components";
-import CollectionPreview from "../components/CollectionPreview";
 
 const ShopPage = () => {
-  const [collections, setCollections] = useState(shopData);
+  const collections = useSelector((state) => state.collection);
 
   return (
     <ShopPageWrapper>

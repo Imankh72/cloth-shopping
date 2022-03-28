@@ -24,6 +24,7 @@ const CartItemWrapper = styled.div`
 
   img {
     width: 30%;
+    border-radius: 4px;
   }
 
   .item-details {

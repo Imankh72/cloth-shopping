@@ -67,6 +67,10 @@ const CheckoutItemWrapper = styled.div`
     padding-right: 15px;
 
     img {
+      border-radius: 4px;
+    }
+
+    img {
       width: 100%;
       height: 100%;
     }

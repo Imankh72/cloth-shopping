@@ -1,11 +1,14 @@
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 import CheckoutItem from "../components/CheckoutItem";
-import { selectCartTotal } from "../redux/cart/cartSelector";
+
+import styled from "styled-components";
 
 const CheckoutPage = () => {
-  const cartTotal = useSelector(selectCartTotal);
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartTotal = cartItems.reduce(
+    (a, cartItem) => a + cartItem.quantity * cartItem.price,
+    0
+  );
 
   return (
     <CheckoutPageWrapper>

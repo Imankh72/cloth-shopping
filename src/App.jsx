@@ -42,7 +42,7 @@ const App = () => {
           element={currentUser ? <Navigate to="/" replace /> : <SignInPage />}
         />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/shop/:id" element={<CollectionPage />} />
+        <Route path="/shop/:categoryName" element={<CollectionPage />} />
       </Routes>
     </>
   );

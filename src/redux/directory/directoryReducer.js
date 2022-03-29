@@ -6,7 +6,7 @@ const initialState = [
     linkUrl: "shop/hats",
   },
   {
-    title: "Jacket",
+    title: "Jackets",
     imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
     id: 2,
     linkUrl: "shop/jackets",

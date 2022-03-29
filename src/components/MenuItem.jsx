@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-const MenuItem = ({ title, imageUrl, size }) => {
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+  const navigate = useNavigate();
+
   return (
-    <MenuItemWrapper className={`${size}`}>
+    <MenuItemWrapper className={`${size}`} onClick={() => navigate(linkUrl)}>
       <div
         className="background-image"
         style={{ backgroundImage: `url(${imageUrl})` }}

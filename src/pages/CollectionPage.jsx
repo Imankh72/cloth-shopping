@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const CollectionPage = () => {
   const { categoryName } = useParams();
-  const collections = useSelector((state) => state.collection);
+  const collections = useSelector((state) => state.shop.collections);
   const selectedCollection = collections.find(
     (collection) => collection.routeName === categoryName
   );
@@ -17,9 +17,8 @@ const CollectionPage = () => {
     <CollectionPageWrapper>
       <h2 className="title">{title}</h2>
       <div className="items">
-        {items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
+        {items &&
+          items.map((item) => <CollectionItem key={item.id} item={item} />)}
       </div>
     </CollectionPageWrapper>
   );

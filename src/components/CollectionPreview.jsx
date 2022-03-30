@@ -1,11 +1,16 @@
 import CollectionItem from "./CollectionItem";
+import { useNavigate } from "react-router";
 
 import styled from "styled-components";
 
-const CollectionPreview = ({ title, items }) => {
+const CollectionPreview = ({ title, routeName, items }) => {
+  const navigate = useNavigate();
+
   return (
     <CollectionWrapper>
-      <h1 className="title">{title.toUpperCase()}</h1>
+      <h1 className="title" onClick={() => navigate(routeName)}>
+        {title.toUpperCase()}
+      </h1>
       <div className="preview">
         {items
           .filter((item, index) => index < 4)
@@ -20,13 +25,13 @@ const CollectionPreview = ({ title, items }) => {
 export default CollectionPreview;
 
 const CollectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   margin-bottom: 30px;
 
   .title {
+    display: inline-block;
     font-size: 28px;
     margin-bottom: 25px;
+    cursor: pointer;
   }
 
   .preview {

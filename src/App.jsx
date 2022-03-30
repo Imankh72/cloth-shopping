@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { auth, createUserProfile } from "./firebase/config";
-import { onSnapshot } from "firebase/firestore";
+import { auth, createUserProfile, db } from "./firebase/config";
+import { collection, onSnapshot } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import { userActionTypes } from "./redux/user/userActionTypes";
 
@@ -13,6 +13,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import CollectionPage from "./pages/CollectionPage";
 
 import { createGlobalStyle } from "styled-components";
+import { shopActionTypes } from "./redux/shop/shopActionTypes";
 
 const App = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -25,8 +26,21 @@ const App = () => {
       }
     });
 
+    const colRef = collection(db, "shop");
+    const unSub = onSnapshot(colRef, (snapshot) => {
+      const { docs } = snapshot;
+      let shopData = [];
+      docs.forEach((doc) => {
+        shopData.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(shopData);
+
+      dispatch({ type: shopActionTypes.UPDATE_COLLECTIONS, payload: shopData });
+    });
+
     return () => {
       onSnapshot();
+      unSub();
     };
   }, [dispatch]);
 

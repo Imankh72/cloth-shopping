@@ -4,13 +4,14 @@ import CollectionPreview from "../components/CollectionPreview";
 import styled from "styled-components";
 
 const CollectionOverview = () => {
-  const collections = useSelector((state) => state.collection);
+  const collections = useSelector((state) => state.shop.collections);
 
   return (
     <CollectionOverviewWrapper>
-      {collections.map(({ id, ...props }) => (
-        <CollectionPreview key={id} {...props} />
-      ))}
+      {collections &&
+        collections.map(({ id, ...props }) => (
+          <CollectionPreview key={id} {...props} />
+        ))}
     </CollectionOverviewWrapper>
   );
 };

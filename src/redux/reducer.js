@@ -8,5 +8,5 @@ export const reducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   directory: directoryReducer,
-  collection: shopReducer,
+  shop: shopReducer,
 });

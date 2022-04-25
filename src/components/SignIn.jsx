@@ -8,7 +8,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +17,9 @@ const SignIn = () => {
       setEmail("");
       setPassword("");
     } catch (error) {
-      setError(error.message);
+      if (error.message === "Firebase: Error (auth/user-not-found).") {
+        alert("User doesn't exist, Please sign up first");
+      }
     }
   };
 
@@ -64,7 +65,6 @@ const SignIn = () => {
             Sign In With Google
           </CustomButton>
         </div>
-        {error && <p>{error}</p>}
       </form>
     </SignInWrapper>
   );

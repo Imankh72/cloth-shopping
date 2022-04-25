@@ -21,6 +21,12 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("Password do not match");
+      return;
+    }
+
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
@@ -30,6 +36,9 @@ const SignUp = () => {
       await createUserProfile(user, { displayName });
       reset();
     } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("Cannot create user, email already in use");
+      }
       console.log(error.message);
     }
   };

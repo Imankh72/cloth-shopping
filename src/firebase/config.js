@@ -36,7 +36,7 @@ export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 
 // Create User function
-export const createUserProfile = async (userAuth) => {
+export const createUserProfile = async (userAuth, extraData) => {
   if (!userAuth) return;
   const { email, uid } = userAuth;
 
@@ -48,6 +48,7 @@ export const createUserProfile = async (userAuth) => {
         email,
         createdAt: serverTimestamp(),
         id: uid,
+        ...extraData,
       });
     } catch (error) {
       console.log(error.message);

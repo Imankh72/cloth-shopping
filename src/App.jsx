@@ -18,6 +18,7 @@ import { shopActionTypes } from "./redux/shop/shopActionTypes";
 const App = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
+
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
       dispatch({ type: userActionTypes.SET_CURRENT_USER, payload: userAuth });
@@ -33,7 +34,6 @@ const App = () => {
       docs.forEach((doc) => {
         shopData.push({ ...doc.data(), id: doc.id });
       });
-      console.log(shopData);
 
       dispatch({ type: shopActionTypes.UPDATE_COLLECTIONS, payload: shopData });
     });

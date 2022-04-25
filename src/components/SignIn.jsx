@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { auth, signInWithGoogle } from "../firebase/config";
+import { auth, signInWithGooglePopup } from "../firebase/config";
 import CustomButton from "./CustomButton";
 import FormInput from "./FormInput";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -60,7 +60,7 @@ const SignIn = () => {
 
         <div className="button-group">
           <CustomButton type="submit">Sign In</CustomButton>
-          <CustomButton onClick={signInWithGoogle} google>
+          <CustomButton onClick={signInWithGooglePopup} google>
             Sign In With Google
           </CustomButton>
         </div>

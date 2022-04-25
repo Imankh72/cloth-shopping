@@ -28,31 +28,30 @@ export const db = getFirestore();
 export const auth = getAuth();
 
 // Google Authentication
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
 // Google Sign In Function
-export const signInWithGoogle = () => {
-  signInWithPopup(auth, provider);
-};
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 
 // Create User function
-export const createUserProfile = async (userAuth, extraData) => {
-  const { email, uid } = userAuth;
+export const createUserProfile = async (userAuth) => {
   if (!userAuth) return;
+  const { email, uid } = userAuth;
 
   const userRef = doc(db, "users", uid);
-  const result = await getDoc(userRef);
-  if (!result.exists()) {
+  const userSnapshot = await getDoc(userRef);
+  if (!userSnapshot.exists()) {
     try {
       await setDoc(userRef, {
         email,
         createdAt: serverTimestamp(),
         id: uid,
-        ...extraData,
       });
     } catch (error) {
       console.log(error.message);
     }
   }
+  return userRef;
 };

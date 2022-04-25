@@ -20,6 +20,9 @@ const SignIn = () => {
       if (error.message === "Firebase: Error (auth/user-not-found).") {
         alert("User doesn't exist, Please sign up first");
       }
+      if (error.message === "Firebase: Error (auth/wrong-password).") {
+        alert("Incorrect password for email");
+      }
     }
   };
 

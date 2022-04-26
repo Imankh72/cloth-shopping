@@ -7,14 +7,17 @@ import { userActionTypes } from "./redux/user/userActionTypes";
 
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ContactPage from "./pages/ContactPage";
+
 import Header from "./components/Header";
 import SignInPage from "./pages/SignInPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import CollectionPage from "./pages/CollectionPage";
 
-import { createGlobalStyle } from "styled-components";
 import { shopActionTypes } from "./redux/shop/shopActionTypes";
-import NotFoundPage from "./pages/NotFoundPage";
+
+import { createGlobalStyle } from "styled-components";
 
 const App = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -56,6 +59,7 @@ const App = () => {
           path="/sign-in"
           element={currentUser ? <Navigate to="/" replace /> : <SignInPage />}
         />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/shop/:categoryName" element={<CollectionPage />} />
         <Route path="*" element={<NotFoundPage />} />

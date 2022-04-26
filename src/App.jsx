@@ -14,6 +14,7 @@ import CollectionPage from "./pages/CollectionPage";
 
 import { createGlobalStyle } from "styled-components";
 import { shopActionTypes } from "./redux/shop/shopActionTypes";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -57,6 +58,7 @@ const App = () => {
         />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/shop/:categoryName" element={<CollectionPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

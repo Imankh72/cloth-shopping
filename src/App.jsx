@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { auth, createUserProfile, db } from "./firebase/config";
-import { collection, onSnapshot } from "firebase/firestore";
+import { auth, createUserProfile } from "./firebase/config";
 import { useDispatch, useSelector } from "react-redux";
 import { userActionTypes } from "./redux/user/userActionTypes";
 
@@ -15,8 +14,6 @@ import SignInPage from "./pages/SignInPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import CollectionPage from "./pages/CollectionPage";
 
-import { shopActionTypes } from "./redux/shop/shopActionTypes";
-
 import { createGlobalStyle } from "styled-components";
 
 const App = () => {
@@ -24,27 +21,15 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    auth.onAuthStateChanged(async (userAuth) => {
-      dispatch({ type: userActionTypes.SET_CURRENT_USER, payload: userAuth });
+    const unSubscribe = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         await createUserProfile(userAuth);
       }
-    });
-
-    const colRef = collection(db, "shop");
-    const unSub = onSnapshot(colRef, (snapshot) => {
-      const { docs } = snapshot;
-      let shopData = [];
-      docs.forEach((doc) => {
-        shopData.push({ ...doc.data(), id: doc.id });
-      });
-
-      dispatch({ type: shopActionTypes.UPDATE_COLLECTIONS, payload: shopData });
+      dispatch({ type: userActionTypes.SET_CURRENT_USER, payload: userAuth });
     });
 
     return () => {
-      onSnapshot();
-      unSub();
+      unSubscribe();
     };
   }, [dispatch]);
 
@@ -99,7 +84,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+  user-select:none;
   padding: 20px 40px;
 }
 

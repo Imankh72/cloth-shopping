@@ -21,9 +21,6 @@ const Header = () => {
         <NavLink className="link" to="/shop">
           SHOP
         </NavLink>
-        <NavLink className="link" to="/contact">
-          CONTACT
-        </NavLink>
         {currentUser ? (
           <div className="link" onClick={() => auth.signOut()}>
             Log Out

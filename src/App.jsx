@@ -7,7 +7,6 @@ import { userActionTypes } from "./redux/user/userActionTypes";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import ContactPage from "./pages/ContactPage";
 
 import Header from "./components/Header";
 import SignInPage from "./pages/SignInPage";
@@ -44,7 +43,6 @@ const App = () => {
           path="/sign-in"
           element={currentUser ? <Navigate to="/" replace /> : <SignInPage />}
         />
-        <Route path="/contact" element={<ContactPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/shop/:categoryName" element={<CollectionPage />} />
         <Route path="*" element={<NotFoundPage />} />
@@ -94,5 +92,11 @@ a{
 
 li{
   list-style: none;
+}
+
+@media screen and (max-width:992px) {
+  body{
+    padding: 10px;
+  }
 }
 `;

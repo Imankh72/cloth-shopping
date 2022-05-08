@@ -22,7 +22,7 @@ export default MenuItem;
 
 const MenuItemWrapper = styled.div`
   min-width: 30%;
-  height: 240px;
+  height: ${({ size }) => (size ? "380px" : "240px")};
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -81,5 +81,15 @@ const MenuItemWrapper = styled.div`
       font-size: 20px;
       font-weight: bold;
     }
+  }
+
+  @media screen and (max-width: 992px) {
+    height: 300px !important;
+    width: 250px;
+  }
+
+  @media screen and (max-width: 576px) {
+    height: 200px !important;
+    width: 200px;
   }
 `;

@@ -65,4 +65,17 @@ const CollectionPageWrapper = styled.div`
     column-gap: 10px;
     row-gap: 25px;
   }
+
+  @media screen and (max-width: 992px) {
+    .items {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .items {
+      grid-template-columns: 1fr;
+    }
+  }
 `;

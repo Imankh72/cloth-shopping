@@ -26,7 +26,9 @@ const CartDropdown = ({ cartItems }) => {
           <span className="empty-message">Your cart is empty</span>
         )}
       </div>
-      <CustomButton onClick={goToCheckoutPage}>Go To Checkout</CustomButton>
+      <CustomButton className="checkout-button" onClick={goToCheckoutPage}>
+        Go To Checkout
+      </CustomButton>
     </CartDropdownWrapper>
   );
 };
@@ -61,5 +63,19 @@ const CartDropdownWrapper = styled.div`
     font-weight: bold;
     letter-spacing: 0.75px;
     margin: 120px auto;
+  }
+
+  @media screen and (max-width: 992px) {
+    right: 5px;
+    .checkout-button {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 230px;
+    height: 300px;
   }
 `;

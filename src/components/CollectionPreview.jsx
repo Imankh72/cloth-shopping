@@ -37,6 +37,23 @@ const CollectionWrapper = styled.div`
   .preview {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 0.5rem;
+  }
+
+  @media screen and (max-width: 992px) {
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 1rem;
+      row-gap: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .preview {
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+    }
   }
 `;

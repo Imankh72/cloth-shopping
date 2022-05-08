@@ -47,7 +47,7 @@ const CollectionItemWrapper = styled.div`
   }
 
   .add-to-cart-button {
-    width: 80%;
+    width: 85%;
     position: absolute;
     top: 75%;
     display: none;
@@ -74,6 +74,27 @@ const CollectionItemWrapper = styled.div`
 
     .name {
       width: 95%;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+
+      .add-to-cart-button {
+        width: 60%;
+        opacity: unset;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &:hover {
+      .add-to-cart-button {
+        width: 70%;
+      }
     }
   }
 `;

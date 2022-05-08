@@ -3,7 +3,7 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { reducer } from "./reducer";
 
-const middleWares = [logger, thunk];
+const middleWares = [thunk];
 
 const composeEnhancer = compose(applyMiddleware(...middleWares));
 

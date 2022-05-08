@@ -1,25 +1,43 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import CollectionItem from "../components/CollectionItem";
+import { fetchCollections } from "../redux/shop/shopActions";
+import Spinner from "../components/Spinner";
 
 import styled from "styled-components";
 
 const CollectionPage = () => {
-  const { categoryName } = useParams();
+  const dispatch = useDispatch();
   const collections = useSelector((state) => state.shop.collections);
-  const selectedCollection = collections.find(
+  const isLoading = useSelector((state) => state.shop.isLoading);
+  const error = useSelector((state) => state.shop.error);
+  const { categoryName } = useParams();
+
+  useEffect(() => {
+    dispatch(fetchCollections());
+  }, [dispatch, categoryName]);
+
+  let selectedCollection = collections.filter(
     (collection) => collection.routeName === categoryName
   );
-
-  const { title, items } = selectedCollection;
+  selectedCollection = selectedCollection[0];
 
   return (
     <CollectionPageWrapper>
-      <h2 className="title">{title}</h2>
-      <div className="items">
-        {items &&
-          items.map((item) => <CollectionItem key={item.id} item={item} />)}
-      </div>
+      {isLoading && !error && <Spinner />}
+      {!isLoading && !error && selectedCollection && (
+        <>
+          <h2 className="title">{selectedCollection.title}</h2>
+          <div className="items">
+            {selectedCollection.items &&
+              selectedCollection.items.map((item) => (
+                <CollectionItem key={item.id} item={item} />
+              ))}
+          </div>
+        </>
+      )}
+      {error && !isLoading && !selectedCollection && <h1>{error}</h1>}
     </CollectionPageWrapper>
   );
 };

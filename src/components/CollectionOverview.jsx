@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { fetchCollections } from "../redux/shop/shopActions";
 
 import styled from "styled-components";
+import Spinner from "./Spinner";
 
 const CollectionOverview = () => {
   const collections = useSelector((state) => state.shop.collections);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.shop.isLoading);
   const error = useSelector((state) => state.shop.error);
-  console.log(error, isLoading, collections);
 
   useEffect(() => {
     dispatch(fetchCollections());
@@ -18,7 +18,7 @@ const CollectionOverview = () => {
 
   return (
     <CollectionOverviewWrapper>
-      {isLoading && !error && <h1>Loading...</h1>}
+      {isLoading && !error && <Spinner />}
 
       {!isLoading &&
         !error &&

@@ -73,4 +73,32 @@ const CheckoutPageWrapper = styled.div`
     margin-left: auto;
     font-size: 36px;
   }
+
+  @media screen and (max-width: 992px) {
+    width: 90%;
+    margin: 0 auto;
+    .checkout-header {
+      justify-content: center;
+      gap: 0.1rem;
+    }
+
+    .total {
+      margin: 30px auto;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .checkout-header {
+      .header-block {
+        width: 20%;
+        span {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .total {
+      font-size: 24px;
+    }
+  }
 `;

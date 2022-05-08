@@ -95,4 +95,24 @@ const CheckoutItemWrapper = styled.div`
     padding-left: 12px;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 768px) {
+    .name,
+    .quantity,
+    .arrow,
+    .price,
+    .value {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .name,
+    .quantity,
+    .arrow,
+    .price,
+    .value {
+      font-size: 12px;
+    }
+  }
 `;

@@ -69,4 +69,10 @@ const HeaderWrapper = styled.div`
       color: var(--color-grey-3);
     }
   }
+
+  @media screen and (max-width: 576px) {
+    .links {
+      gap: 12px;
+    }
+  }
 `;
